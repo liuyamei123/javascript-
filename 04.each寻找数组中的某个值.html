@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var array = [1,4,5,3,2,3];
+        function each(array,callback) {
+            for(var i = 0; i < array.length; i++){
+                var result = callback(i,array[i]);
+                if(result == false){
+                    console.log(!result);
+                    break;
+                }
+            }
+        }
+
+        var index = -1;
+        each(array,function (i,v) {
+            if(v === 3){
+                index = i;
+                return false;
+            }
+        })
+
+        console.log(index);
+//        console.log(false);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

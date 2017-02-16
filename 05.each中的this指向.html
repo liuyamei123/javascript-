@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>d1</div>
+<div>d2</div>
+<div>d3</div>
+<div>d4</div>
+<div>d5</div>
+</body>
+<script>
+    function each(array, callback) {
+        for (var i = 0; i < array.length; i++) {
+            //执行指定的代码
+//            var result=callback(i,array[i]);
+
+//            var result = callback.call(array[i],i,array[i]);
+            var result = callback.apply(array[i],[i,array[i]]);
+
+            //希望for循环可以结束，就需要实现在某种条件的情况下可以调用break;
+            if(result===false){
+                break;    //也可以使用return来代替，因为for循环没有任何代码了
+            }
+
+        }
+    }
+
+    var tags=document.querySelectorAll("*");
+    each(tags,function(i,dom){
+        dom.style.backgroundColor="pink";
+
+        console.log(this);
+    })
+</script>
+</html>
